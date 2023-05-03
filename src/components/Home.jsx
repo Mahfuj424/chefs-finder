@@ -10,7 +10,9 @@ const Home = () => {
             <div className="min-h-screen w-full bg-cover bg-[url('../../public/banner-image.jpg')]">
                 <Header />
             </div>
-            <Chefs/>
+            <div className=''>
+                <Chefs />
+            </div>
         </div>
     );
 };

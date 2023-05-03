@@ -9,6 +9,7 @@ import MainLayout from './components/MainLayout.jsx';
 import Home from './components/Home.jsx';
 import Blog from './components/Blog.jsx';
 import Login from './components/Login';
+import ChefsDetails from './components/ChefsDetails';
 
 
 
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
       {
         path: '/login',
         element: <Login/>
+      },
+      {
+        path: '/chefdetails/:id',
+        element: <ChefsDetails></ChefsDetails>
       }
     ]
   },
