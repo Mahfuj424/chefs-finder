@@ -10,8 +10,8 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
 
-    <div>
-      <div className='pt-8 px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl  lg:px-8'>
+    <div className='pt-4'>
+      <div className='shadow-lg px-4 py-5 rounded-lg bg-cyan-200  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl  lg:px-8'>
         <div className='relative flex items-center justify-between'>
           {/* Logo Section */}
           <Link to='/'>
@@ -25,7 +25,7 @@ const Header = () => {
             <li>
               <NavLink
                 to='/'
-                className={({ isActive }) => (isActive ? 'text-blue-400' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
               >
                 Home
               </NavLink>
@@ -33,7 +33,7 @@ const Header = () => {
             <li>
               <NavLink
                 to='/blog'
-                className={({ isActive }) => (isActive ? 'text-blue-400' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
               >
                 Blog
               </NavLink>
@@ -41,7 +41,7 @@ const Header = () => {
             <li>
               <NavLink
                 to='/login'
-                className={({ isActive }) => (isActive ? 'text-blue-400' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
               >
                 Login
               </NavLink>
@@ -49,7 +49,7 @@ const Header = () => {
             <li>
               <NavLink
                 to='/blog'
-                className={({ isActive }) => (isActive ? 'text-blue-400' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
               >
                 <img src="" alt="Profile" />
               </NavLink>

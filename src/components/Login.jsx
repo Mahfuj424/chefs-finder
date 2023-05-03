@@ -6,7 +6,7 @@ const Login = () => {
     return (
         <div>
             <Header/>
-            <div className="hero min-h-screen bg-base-200">
+            <div className="hero min-h-screen">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold text-center">Please Login</h1>

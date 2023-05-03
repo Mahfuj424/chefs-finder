@@ -1,6 +1,7 @@
 
 /* eslint-disable no-unused-vars */
 import Chefs from './Chefs';
+import Footer from './Footer';
 import Header from './Header';
 
 const Home = () => {
@@ -12,6 +13,9 @@ const Home = () => {
             </div>
             <div className=''>
                 <Chefs />
+            </div>
+            <div>
+                <Footer />
             </div>
         </div>
     );
