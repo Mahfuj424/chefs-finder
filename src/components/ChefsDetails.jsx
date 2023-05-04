@@ -7,6 +7,7 @@ import Rating from 'react-rating';
 import { HiOutlineStar, HiStar } from 'react-icons/hi';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Footer from './Footer';
 
 const ChefsDetails = () => {
     const [disable, setDisable]=useState(false)
@@ -19,6 +20,7 @@ const ChefsDetails = () => {
             .then(res => res.json())
             .then(data => setRecipesData(data))
     }, [])
+
     const { chef_name, cooking_method, description, ingredients, number_of_recipes, picture, popular_recipes, rating, years_of_experience } = recipesData;
     
 
@@ -67,6 +69,7 @@ const ChefsDetails = () => {
                     <button disabled={disable} onClick={handleAddFavorite} className="btn w-36 btn-primary">Favorite</button>
                 </div>
             </div>
+            <Footer/>
         </div>
     );
 };
