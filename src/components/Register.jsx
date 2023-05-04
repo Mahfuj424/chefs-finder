@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 
 
 const Register = () => {
-    const { registerUser, googleUser, githubUser } = useContext(AuthContext);
+    const { registerUser,updateProfileUser, googleUser, githubUser } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [error, setError] = useState('');
@@ -19,9 +19,10 @@ const Register = () => {
         setError('');
         const form = e.target;
         const name = form.name.value;
+        const imgUrl = form.image.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password);
+        console.log(name, imgUrl, email, password);
         if (!/(?=.*[0-9])/.test(password)) {
             setError('password must one number');
             return
@@ -33,9 +34,10 @@ const Register = () => {
         if (password.length < 6) {
             setError('password must be 6 character')
         }
-        if (name, email, password) {
+        if (name, imgUrl, email, password) {
             registerUser(email, password)
                 .then(result => {
+                    updateProfileUser(name,imgUrl)
                     console.log(result.user);
                     navigate('/')
                 })
@@ -84,6 +86,12 @@ const Register = () => {
                                     <span className="label-text">Name</span>
                                 </label>
                                 <input type="text" name='name' placeholder="name" className="input input-bordered" required />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">imgURL</span>
+                                </label>
+                                <input type="text" name='image' placeholder="name" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">

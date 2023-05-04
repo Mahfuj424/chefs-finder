@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 import {
   Bars3BottomRightIcon,
   XMarkIcon,
@@ -9,6 +9,7 @@ import { AuthContext } from './AuthProvider'
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
+  console.log(user?.photoURL);
 
   const handleLogOut = () => {
     logOut();
@@ -53,14 +54,14 @@ const Header = () => {
                 Register
               </NavLink>
             </li>
-            <li>
+            {user && user.email ? <li>
               <NavLink
                 to='/blog'
                 className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
               >
-                <img src="" alt="Profile" />
+                <img className='w-10 h-10 rounded-full' src={user && user?.photoURL} alt="Profile" />
               </NavLink>
-            </li>
+            </li> : ''}
             {
               user && user.email ? <button  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')} onClick={handleLogOut}>LogOut</button>
                 :
@@ -146,7 +147,7 @@ const Header = () => {
                           to='/register'
                           className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                         >
-                          <img src="" alt="Profile" />
+                          <img src={user && user.photoURL} alt="Profile" />
                         </Link>
                       </li>
                     </ul>

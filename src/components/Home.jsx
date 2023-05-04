@@ -3,6 +3,7 @@
 import Chefs from './Chefs';
 import Footer from './Footer';
 import Header from './Header';
+import Subscribe from './Subscribe';
 
 const Home = () => {
 
@@ -13,6 +14,9 @@ const Home = () => {
             </div>
             <div className=''>
                 <Chefs />
+            </div>
+            <div>
+                <Subscribe/>
             </div>
             <div>
                 <Footer />
