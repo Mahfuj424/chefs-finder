@@ -20,7 +20,7 @@ const ChefsDetails = () => {
             .then(data => setRecipesData(data))
     }, [])
     const { chef_name, cooking_method, description, ingredients, number_of_recipes, picture, popular_recipes, rating, years_of_experience } = recipesData;
-    console.log(ingredients);
+    
 
     const handleAddFavorite = () => {
         toast('Added Favorite')
@@ -63,7 +63,7 @@ const ChefsDetails = () => {
                         placeholderSymbol={<HiStar />}
                         fullSymbol={<HiStar />}
                     />
-
+                    <ToastContainer/>
                     <button disabled={disable} onClick={handleAddFavorite} className="btn w-36 btn-primary">Favorite</button>
                 </div>
             </div>

@@ -4,13 +4,14 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
+
 const firebaseConfig = {
-  apiKey: "AIzaSyDRNFPBnGGLst8SQwiZDmN83lvYM2gDYjA",
-  authDomain: "top-chefs-d5339.firebaseapp.com",
-  projectId: "top-chefs-d5339",
-  storageBucket: "top-chefs-d5339.appspot.com",
-  messagingSenderId: "777738564069",
-  appId: "1:777738564069:web:67478de330ac4fb1ea7f0c"
+  apiKey: import.meta.env.VITE_APIKEY ,
+  authDomain: import.meta.env.VITE_AUTHDOMAIN ,
+  projectId: import.meta.env.VITE_PROJECTID ,
+  storageBucket: import.meta.env.VITE_STORAGEBUCKET ,
+  messagingSenderId: import.meta.env.VITE_MESSAGINGSENDERID ,
+  appId: import.meta.env.VITE_APPID, 
 };
 
 // Initialize Firebase
