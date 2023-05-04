@@ -11,6 +11,8 @@ import Blog from './components/Blog.jsx';
 import Login from './components/Login';
 import ChefsDetails from './components/ChefsDetails';
 import AuthProvider from './components/AuthProvider';
+import Register from './components/Register';
+import PrivetRoute from './components/PrivetRoute';
 
 
 
@@ -32,8 +34,12 @@ const router = createBrowserRouter([
         element: <Login />
       },
       {
+        path: '/register',
+        element: <Register/>
+      },
+      {
         path: '/chefdetails/:id',
-        element: <ChefsDetails></ChefsDetails>
+        element: <PrivetRoute><ChefsDetails></ChefsDetails></PrivetRoute>,
       }
     ]
   },

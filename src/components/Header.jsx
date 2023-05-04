@@ -1,12 +1,19 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import {
   Bars3BottomRightIcon,
   XMarkIcon,
 } from '@heroicons/react/24/solid'
+import { AuthContext } from './AuthProvider'
 
 const Header = () => {
+  const { user, logOut } = useContext(AuthContext)
+
+  const handleLogOut = () => {
+    logOut();
+  }
+
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   return (
 
@@ -38,12 +45,24 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
+            {
+              user && user.email ? <button onClick={handleLogOut}>LogOut</button>
+                :
+              <li>
+                <NavLink
+                  to='/login'
+                  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+                >
+                  Login
+                </NavLink>
+              </li>
+            }
             <li>
               <NavLink
-                to='/login'
+                to='/register'
                 className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
               >
-                Login
+                Register
               </NavLink>
             </li>
             <li>
@@ -102,6 +121,22 @@ const Header = () => {
                           className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                         >
                           Blog
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to='/login'
+                          className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
+                        >
+                          Login
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to='/register'
+                          className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
+                        >
+                          Register
                         </Link>
                       </li>
                     </ul>
