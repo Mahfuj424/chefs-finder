@@ -9,7 +9,6 @@ import { AuthContext } from './AuthProvider'
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
-  console.log(user?.photoURL);
 
   const handleLogOut = () => {
     logOut();
@@ -24,7 +23,7 @@ const Header = () => {
           {/* Logo Section */}
           <Link to='/'>
             <span className='ml-2 text-3xl font-bold text-purple-700'>
-              Special Chef 
+              Chefs Finder 
             </span>
           </Link>
 
@@ -54,14 +53,6 @@ const Header = () => {
                 Register
               </NavLink>
             </li>
-            {user && user.email ? <li>
-              <NavLink
-                to='/blog'
-                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
-              >
-                <img className='w-10 h-10 rounded-full' src={user && user?.photoURL} alt="Profile" />
-              </NavLink>
-            </li> : ''}
             {
               user && user.email ? <button  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')} onClick={handleLogOut}>LogOut</button>
                 :
@@ -74,6 +65,14 @@ const Header = () => {
                 </NavLink>
               </li>
             }
+            {user && user.email ? <li>
+              <NavLink
+                to='/blog'
+                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+              >
+                <img className='w-12 h-12 rounded-full' title={user && user?.displayName} src={user && user?.photoURL} alt="Profile" />
+              </NavLink>
+            </li> : ''}
           </ul>
           {/* Mobile Navbar Section */}
           <div className='lg:hidden'>
@@ -93,7 +92,7 @@ const Header = () => {
                     <div>
                       <Link to='/'>
                         <span className='ml-2 text-xl font-bold text-purple-700'>
-                          Special Chef
+                          Chefs Finder
                         </span>
                       </Link>
                     </div>
@@ -147,7 +146,7 @@ const Header = () => {
                           to='/register'
                           className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                         >
-                          <img src={user && user.photoURL} alt="Profile" />
+                          <img className='w-12 h-12 rounded-full' title={user && user?.displayName} src={user && user.photoURL} alt="Profile" />
                         </Link>
                       </li>
                     </ul>

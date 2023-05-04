@@ -39,7 +39,7 @@ const Register = () => {
                 .then(result => {
                     updateProfileUser(name,imgUrl)
                     console.log(result.user);
-                    navigate('/')
+                    navigate('/login')
                 })
                 .catch(err => {
                     console.log(err.message);
@@ -52,6 +52,7 @@ const Register = () => {
         googleUser()
             .then((result) => {
                 console.log(result.user)
+                navigate('/')
             })
             .catch(error => {
                 console.log(error.message);
@@ -62,6 +63,7 @@ const Register = () => {
         githubUser()
             .then(result => {
                 console.log(result.user);
+                navigate('/')
             })
             .catch(error => {
                 console.log(error.message);
@@ -91,7 +93,7 @@ const Register = () => {
                                 <label className="label">
                                     <span className="label-text">imgURL</span>
                                 </label>
-                                <input type="text" name='image' placeholder="name" className="input input-bordered" required />
+                                <input type="text" name='image' placeholder="ImgURl" className="input input-bordered" required />
                             </div>
                             <div className="form-control">
                                 <label className="label">

@@ -15,7 +15,7 @@ const ChefsDetails = () => {
     useEffect(() => {
 
 
-        fetch(`http://localhost:5000/allData/${id}`)
+        fetch(`https://server-fawn-six.vercel.app/allData/${id}`)
             .then(res => res.json())
             .then(data => setRecipesData(data))
     }, [])

@@ -13,6 +13,7 @@ import ChefsDetails from './components/ChefsDetails';
 import AuthProvider from './components/AuthProvider';
 import Register from './components/Register';
 import PrivetRoute from './components/PrivetRoute';
+import ErrorPage from './components/ErrorPage';
 
 
 
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
+    errorElement: <ErrorPage/>,
     children: [
       {
         path: '/',
