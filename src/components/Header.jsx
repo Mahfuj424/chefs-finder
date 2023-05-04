@@ -45,18 +45,6 @@ const Header = () => {
                 Blog
               </NavLink>
             </li>
-            {
-              user && user.email ? <button onClick={handleLogOut}>LogOut</button>
-                :
-              <li>
-                <NavLink
-                  to='/login'
-                  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
-                >
-                  Login
-                </NavLink>
-              </li>
-            }
             <li>
               <NavLink
                 to='/register'
@@ -73,6 +61,18 @@ const Header = () => {
                 <img src="" alt="Profile" />
               </NavLink>
             </li>
+            {
+              user && user.email ? <button  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')} onClick={handleLogOut}>LogOut</button>
+                :
+              <li>
+                <NavLink
+                  to='/login'
+                  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+                >
+                  Login
+                </NavLink>
+              </li>
+            }
           </ul>
           {/* Mobile Navbar Section */}
           <div className='lg:hidden'>
@@ -125,18 +125,28 @@ const Header = () => {
                       </li>
                       <li>
                         <Link
+                          to='/register'
+                          className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
+                        >
+                          Register
+                        </Link>
+                      </li>
+                      {user && user.email ? <button className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400' onClick={handleLogOut}>LogOut</button>
+                        
+                      : <li>
+                        <Link
                           to='/login'
                           className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                         >
                           Login
                         </Link>
-                      </li>
-                      <li>
+                        </li>}
+                        <li>
                         <Link
                           to='/register'
                           className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                         >
-                          Register
+                          <img src="" alt="Profile" />
                         </Link>
                       </li>
                     </ul>
