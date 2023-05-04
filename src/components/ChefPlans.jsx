@@ -3,7 +3,7 @@ import React from 'react';
 const ChefPlans = () => {
   return (
     <div className='my-20 py-12 md:w-[1200px] mx-auto'>
-      <h1 className='text-4xl mb-6 font-bold text-white text-center mt-12 pb-10'>Our Plans for Hiring a Chef</h1>
+      <h1 className='text-4xl mb-6 font-bold text-center mt-12 pb-10'>Our Plans</h1>
       <div className="flex justify-center items-center  text-white">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-4 md:px-0 mt-12 md:mt-2">
           {/* Free Plan Card */}

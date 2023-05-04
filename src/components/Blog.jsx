@@ -15,7 +15,8 @@ const Blog = () => {
         
     };
     return (
-        <div className='md:w-[80%] mx-auto'>
+        <div>
+            <div className='md:w-[80%] mx-auto'>
             <Header></Header>
             <div className="text-center mt-12">
                 <button className='btn btn-error text-white ' onClick={handleDownload}>Download PDF</button> 
@@ -49,7 +50,8 @@ const Blog = () => {
                     Some common use cases for custom hooks include managing form state, handling network requests, and handling animations. By creating custom hooks, developers can create more reusable and maintainable code, while also reducing the complexity of their components.</p>
             </div>
          </div>
-            <Footer></Footer>
+        </div>
+        <Footer></Footer>
         </div>
     );
 };

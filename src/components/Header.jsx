@@ -18,21 +18,21 @@ const Header = () => {
   return (
 
     <div className='pt-4'>
-      <div className='shadow-lg px-4 py-5 rounded-lg bg-cyan-200  mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl  lg:px-8'>
+      <div className='shadow-lg px-4 py-5 rounded-lg bg-gray-700 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl  lg:px-8'>
         <div className='relative flex items-center justify-between'>
           {/* Logo Section */}
           <Link to='/'>
-            <span className='ml-2 text-3xl font-bold text-purple-700'>
+            <span className='ml-2 text-3xl font-bold text-pink-500'>
               Chefs Finder 
             </span>
           </Link>
 
           {/* Nav Items Section */}
-          <ul className='items-center hidden space-x-8 lg:flex'>
+          <ul className='items-center text-white hidden space-x-8 lg:flex'>
             <li>
               <NavLink
                 to='/'
-                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-blue-300' : '')}
               >
                 Home
               </NavLink>
@@ -40,7 +40,7 @@ const Header = () => {
             <li>
               <NavLink
                 to='/blog'
-                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-blue-300' : '')}
               >
                 Blog
               </NavLink>
@@ -48,18 +48,18 @@ const Header = () => {
             <li>
               <NavLink
                 to='/register'
-                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-blue-300' : '')}
               >
                 Register
               </NavLink>
             </li>
             {
-              user && user.email ? <button  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')} onClick={handleLogOut}>LogOut</button>
+              user && user.email ? <button  className={({ isActive }) => (isActive ? 'text-purple-500' : '')} onClick={handleLogOut}>LogOut</button>
                 :
               <li>
                 <NavLink
                   to='/login'
-                  className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+                  className={({ isActive }) => (isActive ? 'text-blue-300' : '')}
                 >
                   Login
                 </NavLink>
@@ -68,7 +68,7 @@ const Header = () => {
             {user && user.email ? <li>
               <NavLink
                 to='/blog'
-                className={({ isActive }) => (isActive ? 'text-purple-500' : 'text-black')}
+                className={({ isActive }) => (isActive ? 'text-blue-300' : '')}
               >
                 <img className='w-12 h-12 rounded-full' title={user && user?.displayName} src={user && user?.photoURL} alt="Profile" />
               </NavLink>
