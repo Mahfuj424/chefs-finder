@@ -27,7 +27,7 @@ const Subscribe = () => {
                 </div>
             </div>
             <div className='col-span-6 mt-16'>
-                <img className='rounded-xl' src="/public/thumbs-up-rap-god-parody-song.gif" alt="" />
+                <img className='rounded-xl' src="https://i.postimg.cc/q7SbS4zm/thumbs-up-rap-god-parody-song.gif" alt="" />
             </div>
         </div>
     );

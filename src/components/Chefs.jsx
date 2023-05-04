@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import Rating from 'react-rating';
 import { Link } from 'react-router-dom';
 import { HiOutlineStar, HiStar } from "react-icons/hi";
+import LazyLoad from 'react-lazy-load';
 
 const Chefs = () => {
     const [chefsData, setChefsData] = useState([])
@@ -24,7 +25,11 @@ const Chefs = () => {
                         const { id, picture, chef_name, number_of_recipes, rating, years_of_experience } = chefData;
                         return <div key={chefData.id}>
                             <div className="card w-96 bg-base-100 shadow-xl">
-                                <figure><img src={picture} alt="Shoes" /></figure>
+                                <figure>
+                                    <LazyLoad height={260} offset={300}>
+                                        <img src={picture} alt="Shoes" />
+                                    </LazyLoad>
+                                </figure>
                                 <div className="card-body">
                                     <h2 className="card-title text-2xl">{chef_name}</h2>
                                     <h3 className='text-lg card-title'>Years of experience: {years_of_experience}</h3>
@@ -32,9 +37,9 @@ const Chefs = () => {
                                     <Rating
                                         readonly
                                         placeholderRating={rating}
-                                        emptySymbol={<HiOutlineStar/>}
-                                        placeholderSymbol={<HiStar/>}
-                                        fullSymbol={<HiStar/>}
+                                        emptySymbol={<HiOutlineStar />}
+                                        placeholderSymbol={<HiStar />}
+                                        fullSymbol={<HiStar />}
                                     />
                                     <div className="card-actions justify-end">
                                         <Link to={`/chefdetails/${id}`}>

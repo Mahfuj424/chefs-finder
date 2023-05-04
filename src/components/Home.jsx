@@ -10,8 +10,9 @@ const Home = () => {
 
     return (
         <div>
-            <div className="min-h-screen w-full bg-cover bg-[url('../../public/banner-image.jpg')]">
+            <div className="min-h-screen w-full bg-cover bg-[url('https://i.postimg.cc/Z5YrL2KC/banner-image.jpg')]">
                 <Header />
+                <h1 className='text-6xl font-bold'>Discover top chefs in your area and elevate your food experience with our chef finder website</h1>
             </div>
             <div className=''>
                 <Chefs />
