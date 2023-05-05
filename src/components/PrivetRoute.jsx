@@ -6,13 +6,14 @@ const PrivetRoute = ({children}) => {
     const { user } = useContext(AuthContext);
     
     const location = useLocation();
+    console.log(location);
     
     if (user) {
         return children;
     }
 
     return (
-        <Navigate state={{ form: location }} replace to='/login'></Navigate>
+        <Navigate to='/login' state={{ from: location }} replace ></Navigate>
     );
 };
 

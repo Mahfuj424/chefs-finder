@@ -1,12 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React, { useContext } from 'react';
 import Header from './Header';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from './AuthProvider';
+import { FiGithub } from "react-icons/fi";
+import { FcGoogle } from "react-icons/fc";
+import { updateProfile } from 'firebase/auth';
 
 const Login = () => {
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, googleUser, githubUser, } = useContext(AuthContext);
     const navigate = useNavigate();
+    const location = useLocation()
+    const pathName = location.state?.from?.pathname || '/'
+    console.log(pathName);
 
 
     const handleSubmit = (e) => {
@@ -24,6 +30,29 @@ const Login = () => {
                     console.log(error.message);
                 })
         }
+    }
+
+
+    const handleGoogleUser = () => {
+        googleUser()
+            .then((result) => {
+                console.log(result.user)
+                navigate(pathName)
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
+
+    const handleGithubUser = () => {
+        githubUser()
+            .then(result => {
+                console.log(result.user);
+                navigate(pathName)
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
     }
 
 
@@ -57,6 +86,12 @@ const Login = () => {
                                 <button className="btn btn-primary">Login</button>
                             </div>
                             <p>Are you new user? <Link className='btn-link' to='/register'>Please Register</Link></p>
+                            <div>
+                                <button className='btn btn-outline w-full hover:bg-blue-700' onClick={handleGoogleUser}><span><FcGoogle/></span>Google</button>
+                            </div>
+                            <div>
+                                <button className='btn btn-outline hover:bg-blue-700 w-full' onClick={handleGithubUser}><span><FiGithub/></span>GitHub</button>
+                            </div>
                         </form>
                     </div>
                 </div>
