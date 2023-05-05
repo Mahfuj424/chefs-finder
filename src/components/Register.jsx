@@ -4,10 +4,11 @@ import { AuthContext } from './AuthProvider';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiGithub } from "react-icons/fi";
 import { FcGoogle } from "react-icons/fc";
+import { updateProfile } from 'firebase/auth';
 
 
 const Register = () => {
-    const { registerUser,updateProfileUser, googleUser, githubUser } = useContext(AuthContext);
+    const { registerUser,updateUserProfile, googleUser, githubUser, setReload } = useContext(AuthContext);
     const navigate = useNavigate();
 
     const [error, setError] = useState('');
@@ -22,7 +23,9 @@ const Register = () => {
         const imgUrl = form.image.value;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, imgUrl, email, password);
+        console.log(name, imgUrl);
+
+
         if (!/(?=.*[0-9])/.test(password)) {
             setError('password must one number');
             return
@@ -37,9 +40,11 @@ const Register = () => {
         if (name, imgUrl, email, password) {
             registerUser(email, password)
                 .then(result => {
-                    updateProfileUser(name,imgUrl)
-                    console.log(result.user);
-                    navigate('/login')
+                    updateUserProfile(name, imgUrl)
+                        .then(() => {
+                            setReload(Date.now())
+                            navigate('/')
+                    })
                 })
                 .catch(err => {
                     console.log(err.message);
@@ -75,7 +80,7 @@ const Register = () => {
     return (
         <div>
             <Header />
-            <div className="hero min-h-screen">
+            <div className="hero min-h-screen mt-16">
                 <div className="hero-content flex-col">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold text-center">Please Register</h1>

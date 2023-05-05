@@ -24,22 +24,22 @@ const Chefs = () => {
                     chefsData.map((chefData) => {
                         const { id, picture, chef_name, number_of_recipes, rating, years_of_experience } = chefData;
                         return <div key={chefData.id}>
-                            <div className="card w-96 bg-base-100 shadow-xl">
+                            <div className="card md:w-96 w-[365px] text-white shadow-xl bg-[#050e41]">
                                 <figure>
                                     <LazyLoad height={260} offset={300}>
-                                        <img src={picture} alt="Shoes" />
+                                        <img src={picture} alt="chef" />
                                     </LazyLoad>
                                 </figure>
-                                <div className="card-body">
+                                <div className="card-body ">
                                     <h2 className="card-title text-2xl">{chef_name}</h2>
                                     <h3 className='text-lg card-title'>Years of experience: {years_of_experience}</h3>
                                     <h3 className='text-lg card-title'>Numbers of recipes: {number_of_recipes}</h3>
-                                    <Rating
+                                    <Rating 
                                         readonly
                                         placeholderRating={rating}
-                                        emptySymbol={<HiOutlineStar />}
-                                        placeholderSymbol={<HiStar />}
-                                        fullSymbol={<HiStar />}
+                                        emptySymbol={<HiOutlineStar className='text-yellow-300' />}
+                                        placeholderSymbol={<HiStar className='text-yellow-300'  />}
+                                        fullSymbol={<HiStar className='text-yellow-300'  />}
                                     />
                                     <div className="card-actions justify-end">
                                         <Link to={`/chefdetails/${id}`}>

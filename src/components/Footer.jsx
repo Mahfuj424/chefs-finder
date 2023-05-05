@@ -4,12 +4,10 @@ const Footer = () => {
     return (
         <div className='mt-20'>
             <footer className="footer p-10 bg-base-300 text-base-content">
-                <div>
+                <div className='md:ms-14 md:ps-16'>
                     <span className="footer-title">Services</span>
-                    <a className="link link-hover">Branding</a>
-                    <a className="link link-hover">Design</a>
-                    <a className="link link-hover">Marketing</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <a className="link link-hover">All chefs</a>
+                    <a className="link link-hover">Recipes</a>
                 </div>
                 <div>
                     <span className="footer-title">Company</span>

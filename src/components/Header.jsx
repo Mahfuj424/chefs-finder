@@ -9,6 +9,7 @@ import { AuthContext } from './AuthProvider'
 
 const Header = () => {
   const { user, logOut } = useContext(AuthContext)
+  console.log(user);
 
   const handleLogOut = () => {
     logOut();
@@ -54,7 +55,7 @@ const Header = () => {
               </NavLink>
             </li>
             {
-              user && user.email ? <button  className={({ isActive }) => (isActive ? 'text-purple-500' : '')} onClick={handleLogOut}>LogOut</button>
+              user ? <button  className={({ isActive }) => (isActive ? 'text-purple-500' : '')} onClick={handleLogOut}>LogOut</button>
                 :
               <li>
                 <NavLink
@@ -65,7 +66,7 @@ const Header = () => {
                 </NavLink>
               </li>
             }
-            {user && user.email ? <li>
+            {user  ? <li>
               <NavLink
                 to='/blog'
                 className={({ isActive }) => (isActive ? 'text-blue-300' : '')}
@@ -82,7 +83,7 @@ const Header = () => {
               title='Open Menu'
               onClick={() => setIsMenuOpen(true)}
             >
-              <Bars3BottomRightIcon className='w-5 text-gray-600' />
+              <Bars3BottomRightIcon className='w-5 text-white' />
             </button>
             {isMenuOpen && (
               <div className='absolute top-0 left-0 w-full z-10'>
@@ -141,14 +142,14 @@ const Header = () => {
                           Login
                         </Link>
                         </li>}
-                        <li>
+                      {user && user.email ? <li>
                         <Link
                           to='/register'
                           className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-blue-400'
                         >
                           <img className='w-12 h-12 rounded-full' title={user && user?.displayName} src={user && user.photoURL} alt="Profile" />
                         </Link>
-                      </li>
+                      </li>: ''}
                     </ul>
                   </nav>
                 </div>

@@ -6,24 +6,33 @@ import {
 } from "firebase/auth";
 import app from '../../firebase-config';
 
-export const AuthContext = createContext(null)
+export const AuthContext = createContext();
 const auth = getAuth(app)
 
 const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState({});
+    const [user, setUser] = useState(null);
     const googleProvider = new GoogleAuthProvider();
     const githubProvider = new GithubAuthProvider();
-    const [loading,setLoading] = useState(true)
+    const [loading, setLoading] = useState(true)
+    const [reload, setReload] = useState()
+    console.log(user);
     
     const registerUser = (email, password) => {
         setLoading(true)
         return createUserWithEmailAndPassword(auth, email, password)
     };
 
-    const unSubscribe = onAuthStateChanged(auth, (loggedInUser) => {
-        setUser(loggedInUser)
-        setLoading(false)
-    })
+    // Monitor user changes
+    useEffect(() => {
+        const unSubscribe = onAuthStateChanged(auth, currentUser => {
+            setLoading(false);
+            setUser(currentUser)
+        })
+
+        return () => {
+            return unSubscribe();
+        }
+    }, [])
 
     const logOut = () => {
         
@@ -36,29 +45,46 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
     
-    useEffect(() => {
-        unSubscribe();
-    }, [])
+    
     
     const googleUser = () => {
-        
+        setLoading(true)
         return signInWithPopup(auth, googleProvider)
     }
 
     const githubUser = () => {
-       
+        setLoading(true)
         return signInWithPopup(auth, githubProvider)
     }
-    const updateProfileUser = (name, photoUrl) => {
+    // const updateProfileUser = (name, photoUrl) => {
         
+    //     return updateProfile(auth.currentUser, {
+    //         displayName: name,
+    //         photoURL : photoUrl,
+    //     })
+    // }
+
+    const updateUserProfile = (name, imgURL) => {
+        console.log(name,imgURL);
         return updateProfile(auth.currentUser, {
-            displayName: name,
-            photoURL : photoUrl,
-        })
+                    displayName: name,
+                    photoURL : imgURL,
+                })
     }
 
 
-    const authInfo = {registerUser,loading, user, logOut, loginUser, googleUser, githubUser,updateProfileUser};
+    const authInfo = {
+        registerUser,
+        loading,
+        user,
+        updateUserProfile,
+        logOut,
+        loginUser,
+        googleUser,
+        githubUser,
+        setReload
+        
+    };
 
 
     return (
